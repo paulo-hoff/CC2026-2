@@ -1,0 +1,46 @@
+/**
+ * formatters.js — funções que transformam dados em texto exibível.
+ * Sem acesso ao DOM.
+ *
+ * Regra do laboratório: edite SOMENTE a região da sua funcionalidade
+ * (entre // [Fxx] e // [/Fxx]) e remova a linha NOT_IMPLEMENTED:Fxx ao concluir.
+ */
+
+/** Escapa caracteres especiais de HTML. Use sempre que inserir texto vindo de dados em innerHTML. */
+export function escapeHtml(text) {
+  return String(text ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/** pluralize(1, 'usuário', 'usuários') → 'usuário' */
+export function pluralize(count, singular, plural) {
+  return count === 1 ? singular : plural;
+}
+
+// [F10] Data e hora da última atualização
+// NOT_IMPLEMENTED:F10
+/**
+ * @param {Date|null} date
+ * @returns {string} 'dd/mm/aaaa HH:MM' (ex.: '05/01/2025 09:07'); sem data = '--'
+ */
+export function formatDateTime(date) {
+  return '--'; // TODO(F10)
+}
+// [/F10]
+
+// [F18] Formatação de nomes
+// NOT_IMPLEMENTED:F18
+/**
+ * Remove tratamento inicial (Mr., Mrs., Ms., Dr.), colapsa espaços e coloca cada palavra
+ * com a primeira letra maiúscula e o restante minúsculo.
+ * @param {string} name
+ * @returns {string}
+ */
+export function formatUserName(name) {
+  return name; // TODO(F18)
+}
+// [/F18]

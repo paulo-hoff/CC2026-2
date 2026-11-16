@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Material reservado ao professor: NUNCA versionar
+gabarito/
+solucao/
+solucoes/
+professor-private/
+*.patch

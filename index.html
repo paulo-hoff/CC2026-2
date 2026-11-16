@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Collaborative Data Dashboard</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-title">
+      <h1>Collaborative Data Dashboard</h1>
+      <p class="app-subtitle">Laboratório de desenvolvimento colaborativo · Git, GitHub e CI/CD</p>
+    </div>
+    <div class="header-actions" id="header-actions">
+      <!-- AÇÕES DO CABEÇALHO: coloque aqui o botão da sua funcionalidade (F22 ou F29) -->
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div id="messages" class="messages" role="status" aria-live="polite" hidden></div>
+    <div id="loading" class="loading" aria-live="polite" hidden>Carregando dados…</div>
+
+    <section id="indicators" class="indicators" aria-label="Indicadores">
+      <article class="card">
+        <h2 class="card-label">Usuários</h2>
+        <p class="card-value" id="count-users">--</p>
+      </article>
+      <article class="card">
+        <h2 class="card-label">Publicações</h2>
+        <p class="card-value" id="count-posts">--</p>
+      </article>
+      <article class="card">
+        <h2 class="card-label">Tarefas</h2>
+        <p class="card-value" id="count-todos">--</p>
+      </article>
+      <article class="card">
+        <h2 class="card-label">Tarefas concluídas</h2>
+        <p class="card-value" id="percent-completed">--</p>
+      </article>
+      <article class="card">
+        <h2 class="card-label">Última atualização</h2>
+        <p class="card-value card-value-small" id="last-update">--</p>
+      </article>
+    </section>
+
+    <section id="toolbar" class="toolbar" aria-label="Pesquisa e filtros">
+      <div class="field">
+        <label for="search-input">Pesquisar por nome</label>
+        <input id="search-input" type="search" placeholder="Digite um nome" autocomplete="off" />
+        <p id="search-error" class="field-error" hidden></p>
+      </div>
+      <div class="field">
+        <label for="filter-city">Cidade</label>
+        <select id="filter-city">
+          <option value="">Todas as cidades</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="sort-order">Ordem</label>
+        <select id="sort-order">
+          <option value="none">Padrão</option>
+          <option value="asc">Nome (A–Z)</option>
+          <option value="desc">Nome (Z–A)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="limit-select">Registros exibidos</label>
+        <select id="limit-select">
+          <option value="0">Todos</option>
+          <option value="5">5</option>
+          <option value="8">8</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="todo-status">Tarefas</label>
+        <select id="todo-status">
+          <option value="all">Todas</option>
+          <option value="completed">Concluídas</option>
+          <option value="pending">Pendentes</option>
+        </select>
+      </div>
+      <div class="toolbar-actions" id="toolbar-actions">
+        <!-- [F21] Botão "Atualizar dados" -->
+        <!-- [/F21] -->
+
+        <!-- [F07] Botão "Limpar filtros" -->
+        <!-- [/F07] -->
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel" aria-labelledby="users-title">
+        <h2 id="users-title">Usuários</h2>
+        <ul id="user-list" class="user-list"></ul>
+        <nav id="pagination" class="pagination" aria-label="Paginação">
+          <button id="btn-prev" type="button" class="btn">Anterior</button>
+          <span id="page-info">Página 1 de 1</span>
+          <button id="btn-next" type="button" class="btn">Próxima</button>
+        </nav>
+      </section>
+
+      <section class="panel" aria-labelledby="todos-title">
+        <h2 id="todos-title">Tarefas</h2>
+        <ul id="todo-list" class="todo-list"></ul>
+      </section>
+    </div>
+
+    <aside id="user-details" class="panel user-details" aria-live="polite" hidden></aside>
+  </main>
+
+  <footer class="app-footer">
+    <p>Projeto educacional — Laboratório de Desenvolvimento Colaborativo com GitHub e CI/CD.</p>
+    <p>Origem dos dados: <strong id="data-source">--</strong></p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

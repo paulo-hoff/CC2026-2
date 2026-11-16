@@ -1,0 +1,82 @@
+name: CI
+
+# Executa em todo Pull Request cujo destino seja develop ou main.
+on:
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Um novo push no mesmo PR cancela a execução anterior (economiza fila no laboratório).
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Check obrigatório nº 1 — qualidade do código (etapas 1 a 6 da CI)
+  ci-qualidade:
+    name: ci-qualidade
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 1. Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: 2. Preparar ambiente (Node.js)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 3. Verificar estrutura de arquivos
+        run: npm run check:structure
+
+      - name: 4. Verificar sintaxe JavaScript
+        run: npm run check:syntax
+
+      - name: 5. Executar testes automatizados
+        run: npm test
+
+      - name: 6. Validar funcionalidades essenciais (smoke test)
+        run: npm run smoke
+
+  # Check obrigatório nº 2 — política de branches e de Pull Requests (etapa 7)
+  ci-politica-branches:
+    name: ci-politica-branches
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout com histórico completo (necessário para listar os arquivos do PR)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Preparar ambiente (Node.js)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verificar origem/destino, título, Issue e escopo do PR
+        run: node scripts/check-pr.js
+
+  # Check obrigatório nº 3 — resultado final (etapa 8). Marque ESTE check como obrigatório.
+  ci-resultado:
+    name: ci-resultado
+    runs-on: ubuntu-latest
+    needs: [ci-qualidade, ci-politica-branches]
+    if: always()
+    steps:
+      - name: Aprovado ou reprovado
+        run: |
+          echo "ci-qualidade:          ${{ needs.ci-qualidade.result }}"
+          echo "ci-politica-branches:  ${{ needs.ci-politica-branches.result }}"
+          if [ "${{ needs.ci-qualidade.result }}" != "success" ]; then
+            echo "::error::REPROVADO — verifique o job ci-qualidade."; exit 1
+          fi
+          # Em PRs a política é obrigatória; em execução manual o job é ignorado (skipped).
+          if [ "${{ needs.ci-politica-branches.result }}" != "success" ] && [ "${{ needs.ci-politica-branches.result }}" != "skipped" ]; then
+            echo "::error::REPROVADO — verifique o job ci-politica-branches."; exit 1
+          fi
+          echo "APROVADO — pronto para revisão e merge."

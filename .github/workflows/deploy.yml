@@ -1,0 +1,51 @@
+name: Deploy
+
+# Publica no GitHub Pages SOMENTE quando algo é integrado à main
+# (ou quando o professor dispara manualmente). Nunca roda em branches de funcionalidade.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissões mínimas exigidas pelo mecanismo oficial de publicação via Actions.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Uma publicação por vez; nunca cancela uma publicação em andamento.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    name: validar
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Mesmas verificações da CI (sem a política de PR, que só faz sentido em PR)
+      - run: npm run validate -- --no-pr
+      - name: Montar a pasta dist/ (somente o que será publicado)
+        run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  publicar:
+    name: publicar
+    needs: validar
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

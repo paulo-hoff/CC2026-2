@@ -1,0 +1,568 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "address": {
+        "city": "Gwenborough"
+      },
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "company": {
+        "name": "Romaguera-Crona"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv",
+      "address": {
+        "city": "Wisokyburgh"
+      },
+      "phone": "010-692-6593 x09125",
+      "website": "anastasia.net",
+      "company": {
+        "name": "Deckow-Crist"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "Nathan@yesenia.net",
+      "address": {
+        "city": "McKenziehaven"
+      },
+      "phone": "1-463-123-4447",
+      "website": "ramiro.info",
+      "company": {
+        "name": "Romaguera-Jacobson"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Patricia Lebsack",
+      "username": "Karianne",
+      "email": "Julianne.OConner@kory.org",
+      "address": {
+        "city": "South Elvis"
+      },
+      "phone": "493-170-9623 x156",
+      "website": "kale.biz",
+      "company": {
+        "name": "Robel-Corkery"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Chelsey Dietrich",
+      "username": "Kamren",
+      "email": "Lucio_Hettinger@annie.ca",
+      "address": {
+        "city": "Roscoeview"
+      },
+      "phone": "(254)954-1289",
+      "website": "demarco.info",
+      "company": {
+        "name": "Keebler LLC"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Mrs. Dennis Schulist",
+      "username": "Leopoldo_Corkery",
+      "email": "Karley_Dach@jasper.info",
+      "address": {
+        "city": "South Christy"
+      },
+      "phone": "1-477-935-8478 x6430",
+      "website": "ola.org",
+      "company": {
+        "name": "Considine-Lockman"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Kurtis Weissnat",
+      "username": "Elwyn.Skiles",
+      "email": "Telly.Hoeger@billy.biz",
+      "address": {
+        "city": "Howemouth"
+      },
+      "phone": "210.067.6132",
+      "website": "elvis.io",
+      "company": {
+        "name": "Johns Group"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Nicholas Runolfsdottir V",
+      "username": "Maxime_Nienow",
+      "email": "Sherwood@rosamond.me",
+      "address": {
+        "city": "Aliyaview"
+      },
+      "phone": "586.493.6943 x140",
+      "website": "jacynthe.com",
+      "company": {
+        "name": "Abernathy Group"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Glenna Reichert",
+      "username": "Delphine",
+      "email": "Chaim_McDermott@dana.io",
+      "address": {
+        "city": "Bartholomebury"
+      },
+      "phone": "(775)976-6794 x41206",
+      "website": "conrad.com",
+      "company": {
+        "name": "Yost and Sons"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Clementina DuBuque",
+      "username": "Moriah.Stanton",
+      "email": "Rey.Padberg@karina.biz",
+      "address": {
+        "city": "Lebsackbury"
+      },
+      "phone": "024-648-3804",
+      "website": "ambrose.net",
+      "company": {
+        "name": "Hoeger LLC"
+      }
+    }
+  ],
+  "posts": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "[local] Publicação 1 de Bret",
+      "body": "Texto de exemplo da publicação 1 gerado para o laboratório."
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "title": "[local] Publicação 2 de Bret",
+      "body": "Texto de exemplo da publicação 2 gerado para o laboratório."
+    },
+    {
+      "userId": 1,
+      "id": 3,
+      "title": "[local] Publicação 3 de Bret",
+      "body": "Texto de exemplo da publicação 3 gerado para o laboratório."
+    },
+    {
+      "userId": 2,
+      "id": 4,
+      "title": "[local] Publicação 4 de Antonette",
+      "body": "Texto de exemplo da publicação 4 gerado para o laboratório."
+    },
+    {
+      "userId": 2,
+      "id": 5,
+      "title": "[local] Publicação 5 de Antonette",
+      "body": "Texto de exemplo da publicação 5 gerado para o laboratório."
+    },
+    {
+      "userId": 2,
+      "id": 6,
+      "title": "[local] Publicação 6 de Antonette",
+      "body": "Texto de exemplo da publicação 6 gerado para o laboratório."
+    },
+    {
+      "userId": 3,
+      "id": 7,
+      "title": "[local] Publicação 7 de Samantha",
+      "body": "Texto de exemplo da publicação 7 gerado para o laboratório."
+    },
+    {
+      "userId": 3,
+      "id": 8,
+      "title": "[local] Publicação 8 de Samantha",
+      "body": "Texto de exemplo da publicação 8 gerado para o laboratório."
+    },
+    {
+      "userId": 3,
+      "id": 9,
+      "title": "[local] Publicação 9 de Samantha",
+      "body": "Texto de exemplo da publicação 9 gerado para o laboratório."
+    },
+    {
+      "userId": 4,
+      "id": 10,
+      "title": "[local] Publicação 10 de Karianne",
+      "body": "Texto de exemplo da publicação 10 gerado para o laboratório."
+    },
+    {
+      "userId": 4,
+      "id": 11,
+      "title": "[local] Publicação 11 de Karianne",
+      "body": "Texto de exemplo da publicação 11 gerado para o laboratório."
+    },
+    {
+      "userId": 4,
+      "id": 12,
+      "title": "[local] Publicação 12 de Karianne",
+      "body": "Texto de exemplo da publicação 12 gerado para o laboratório."
+    },
+    {
+      "userId": 5,
+      "id": 13,
+      "title": "[local] Publicação 13 de Kamren",
+      "body": "Texto de exemplo da publicação 13 gerado para o laboratório."
+    },
+    {
+      "userId": 5,
+      "id": 14,
+      "title": "[local] Publicação 14 de Kamren",
+      "body": "Texto de exemplo da publicação 14 gerado para o laboratório."
+    },
+    {
+      "userId": 5,
+      "id": 15,
+      "title": "[local] Publicação 15 de Kamren",
+      "body": "Texto de exemplo da publicação 15 gerado para o laboratório."
+    },
+    {
+      "userId": 6,
+      "id": 16,
+      "title": "[local] Publicação 16 de Leopoldo_Corkery",
+      "body": "Texto de exemplo da publicação 16 gerado para o laboratório."
+    },
+    {
+      "userId": 6,
+      "id": 17,
+      "title": "[local] Publicação 17 de Leopoldo_Corkery",
+      "body": "Texto de exemplo da publicação 17 gerado para o laboratório."
+    },
+    {
+      "userId": 6,
+      "id": 18,
+      "title": "[local] Publicação 18 de Leopoldo_Corkery",
+      "body": "Texto de exemplo da publicação 18 gerado para o laboratório."
+    },
+    {
+      "userId": 7,
+      "id": 19,
+      "title": "[local] Publicação 19 de Elwyn.Skiles",
+      "body": "Texto de exemplo da publicação 19 gerado para o laboratório."
+    },
+    {
+      "userId": 7,
+      "id": 20,
+      "title": "[local] Publicação 20 de Elwyn.Skiles",
+      "body": "Texto de exemplo da publicação 20 gerado para o laboratório."
+    },
+    {
+      "userId": 7,
+      "id": 21,
+      "title": "[local] Publicação 21 de Elwyn.Skiles",
+      "body": "Texto de exemplo da publicação 21 gerado para o laboratório."
+    },
+    {
+      "userId": 8,
+      "id": 22,
+      "title": "[local] Publicação 22 de Maxime_Nienow",
+      "body": "Texto de exemplo da publicação 22 gerado para o laboratório."
+    },
+    {
+      "userId": 8,
+      "id": 23,
+      "title": "[local] Publicação 23 de Maxime_Nienow",
+      "body": "Texto de exemplo da publicação 23 gerado para o laboratório."
+    },
+    {
+      "userId": 8,
+      "id": 24,
+      "title": "[local] Publicação 24 de Maxime_Nienow",
+      "body": "Texto de exemplo da publicação 24 gerado para o laboratório."
+    },
+    {
+      "userId": 9,
+      "id": 25,
+      "title": "[local] Publicação 25 de Delphine",
+      "body": "Texto de exemplo da publicação 25 gerado para o laboratório."
+    },
+    {
+      "userId": 9,
+      "id": 26,
+      "title": "[local] Publicação 26 de Delphine",
+      "body": "Texto de exemplo da publicação 26 gerado para o laboratório."
+    },
+    {
+      "userId": 9,
+      "id": 27,
+      "title": "[local] Publicação 27 de Delphine",
+      "body": "Texto de exemplo da publicação 27 gerado para o laboratório."
+    },
+    {
+      "userId": 10,
+      "id": 28,
+      "title": "[local] Publicação 28 de Moriah.Stanton",
+      "body": "Texto de exemplo da publicação 28 gerado para o laboratório."
+    },
+    {
+      "userId": 10,
+      "id": 29,
+      "title": "[local] Publicação 29 de Moriah.Stanton",
+      "body": "Texto de exemplo da publicação 29 gerado para o laboratório."
+    },
+    {
+      "userId": 10,
+      "id": 30,
+      "title": "[local] Publicação 30 de Moriah.Stanton",
+      "body": "Texto de exemplo da publicação 30 gerado para o laboratório."
+    }
+  ],
+  "todos": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "[local] Revisar o pull request",
+      "completed": false
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "title": "[local] Atualizar a documentação",
+      "completed": false
+    },
+    {
+      "userId": 1,
+      "id": 3,
+      "title": "[local] Publicar a versão",
+      "completed": true
+    },
+    {
+      "userId": 1,
+      "id": 4,
+      "title": "[local] Ler os logs da execução",
+      "completed": false
+    },
+    {
+      "userId": 2,
+      "id": 5,
+      "title": "[local] Publicar a versão",
+      "completed": false
+    },
+    {
+      "userId": 2,
+      "id": 6,
+      "title": "[local] Ler os logs da execução",
+      "completed": true
+    },
+    {
+      "userId": 2,
+      "id": 7,
+      "title": "[local] Revisar o pull request",
+      "completed": true
+    },
+    {
+      "userId": 2,
+      "id": 8,
+      "title": "[local] Atualizar a documentação",
+      "completed": false
+    },
+    {
+      "userId": 3,
+      "id": 9,
+      "title": "[local] Revisar o pull request",
+      "completed": true
+    },
+    {
+      "userId": 3,
+      "id": 10,
+      "title": "[local] Atualizar a documentação",
+      "completed": false
+    },
+    {
+      "userId": 3,
+      "id": 11,
+      "title": "[local] Publicar a versão",
+      "completed": false
+    },
+    {
+      "userId": 3,
+      "id": 12,
+      "title": "[local] Ler os logs da execução",
+      "completed": true
+    },
+    {
+      "userId": 4,
+      "id": 13,
+      "title": "[local] Publicar a versão",
+      "completed": false
+    },
+    {
+      "userId": 4,
+      "id": 14,
+      "title": "[local] Ler os logs da execução",
+      "completed": true
+    },
+    {
+      "userId": 4,
+      "id": 15,
+      "title": "[local] Revisar o pull request",
+      "completed": true
+    },
+    {
+      "userId": 4,
+      "id": 16,
+      "title": "[local] Atualizar a documentação",
+      "completed": false
+    },
+    {
+      "userId": 5,
+      "id": 17,
+      "title": "[local] Revisar o pull request",
+      "completed": false
+    },
+    {
+      "userId": 5,
+      "id": 18,
+      "title": "[local] Atualizar a documentação",
+      "completed": true
+    },
+    {
+      "userId": 5,
+      "id": 19,
+      "title": "[local] Publicar a versão",
+      "completed": false
+    },
+    {
+      "userId": 5,
+      "id": 20,
+      "title": "[local] Ler os logs da execução",
+      "completed": false
+    },
+    {
+      "userId": 6,
+      "id": 21,
+      "title": "[local] Publicar a versão",
+      "completed": true
+    },
+    {
+      "userId": 6,
+      "id": 22,
+      "title": "[local] Ler os logs da execução",
+      "completed": false
+    },
+    {
+      "userId": 6,
+      "id": 23,
+      "title": "[local] Revisar o pull request",
+      "completed": false
+    },
+    {
+      "userId": 6,
+      "id": 24,
+      "title": "[local] Atualizar a documentação",
+      "completed": true
+    },
+    {
+      "userId": 7,
+      "id": 25,
+      "title": "[local] Revisar o pull request",
+      "completed": false
+    },
+    {
+      "userId": 7,
+      "id": 26,
+      "title": "[local] Atualizar a documentação",
+      "completed": false
+    },
+    {
+      "userId": 7,
+      "id": 27,
+      "title": "[local] Publicar a versão",
+      "completed": true
+    },
+    {
+      "userId": 7,
+      "id": 28,
+      "title": "[local] Ler os logs da execução",
+      "completed": true
+    },
+    {
+      "userId": 8,
+      "id": 29,
+      "title": "[local] Publicar a versão",
+      "completed": false
+    },
+    {
+      "userId": 8,
+      "id": 30,
+      "title": "[local] Ler os logs da execução",
+      "completed": true
+    },
+    {
+      "userId": 8,
+      "id": 31,
+      "title": "[local] Revisar o pull request",
+      "completed": false
+    },
+    {
+      "userId": 8,
+      "id": 32,
+      "title": "[local] Atualizar a documentação",
+      "completed": false
+    },
+    {
+      "userId": 9,
+      "id": 33,
+      "title": "[local] Revisar o pull request",
+      "completed": true
+    },
+    {
+      "userId": 9,
+      "id": 34,
+      "title": "[local] Atualizar a documentação",
+      "completed": false
+    },
+    {
+      "userId": 9,
+      "id": 35,
+      "title": "[local] Publicar a versão",
+      "completed": true
+    },
+    {
+      "userId": 9,
+      "id": 36,
+      "title": "[local] Ler os logs da execução",
+      "completed": true
+    },
+    {
+      "userId": 10,
+      "id": 37,
+      "title": "[local] Publicar a versão",
+      "completed": false
+    },
+    {
+      "userId": 10,
+      "id": 38,
+      "title": "[local] Ler os logs da execução",
+      "completed": false
+    },
+    {
+      "userId": 10,
+      "id": 39,
+      "title": "[local] Revisar o pull request",
+      "completed": true
+    },
+    {
+      "userId": 10,
+      "id": 40,
+      "title": "[local] Atualizar a documentação",
+      "completed": false
+    }
+  ]
+}

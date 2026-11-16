@@ -1,0 +1,100 @@
+/* components.css — componentes reutilizáveis */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.9rem 1rem;
+}
+
+.card-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.card-value-small {
+  font-size: 1rem;
+  padding-top: 0.55rem;
+}
+
+.btn {
+  font: inherit;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 11rem;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: var(--danger-text);
+}
+
+.message {
+  border-radius: var(--radius);
+  padding: 0.7rem 1rem;
+}
+
+.message-error {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+  border: 1px solid var(--danger-text);
+}
+
+/* [F28] Estilo da mensagem de sucesso (classe message-success, como seletor de classe) */
+/* [/F28] */
+
+.loading {
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px dashed var(--primary);
+  color: var(--primary);
+}
+
+.empty-state {
+  padding: 1rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* [F29] Estilo do botão "Voltar ao início" */
+/* [/F29] */
