@@ -41,7 +41,6 @@ export function filterByName(users, query) {
   const term = normalizeText(query);
   if (!term) return users;
   return users.filter((user) => normalizeText(user.name).includes(term));
-// TODO(F04)
 }
 // [/F04]
 
