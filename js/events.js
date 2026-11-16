@@ -85,7 +85,20 @@ function bindUserList(ctx) {
  * state.page = 1; ctx.render().
  */
 function bindClearFilters(ctx) {
-  // TODO(F07)
+  const botao = document.getElementById('btn-clear-filters');
+
+   botao.addEventListener('click', () => {
+     ctx.state.criteria = clearFilters(ctx.state.criteria);
+
+     document.getElementById('search-input').value = '';
+     document.getElementById('filter-city').value = '';
+     document.getElementById('sort-order').value = 'none';
+     document.getElementById('limit-select').value = '0';
+     document.getElementById('todo-status').value = 'all';
+
+     ctx.state.page = 1;
+     ctx.render();
+   });
 }
 // [/F07]
 
