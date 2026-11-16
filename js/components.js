@@ -67,10 +67,12 @@ export function clearMessages(el) {
 /* ---------- Rodada 1 ---------- */
 
 // [F01] Contador de usuários
-// NOT_IMPLEMENTED:F01
+
 /** Escreve a quantidade de usuários em `el` (padrão: #count-users). */
 export function renderUserCount(users, el = document.getElementById('count-users')) {
-  // TODO(F01)
+
+  el.textContent = String(users.length);
+
 }
 // [/F01]
 
