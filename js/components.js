@@ -83,9 +83,12 @@ export function renderPostCount(posts, el = document.getElementById('count-posts
 // [/F02]
 
 // [F03] Contador de tarefas
-// NOT_IMPLEMENTED:F03
 /** Escreve a quantidade de tarefas em `el` (padrão: #count-todos). */
 export function renderTodoCount(todos, el = document.getElementById('count-todos')) {
+
+  el.textContent = todos.length.toString();
+
+   
   // TODO(F03)
 }
 // [/F03]
