@@ -3,7 +3,7 @@
 # "Require review from Code Owners" estiver ativada nas regras de proteção.
 # O restante do projeto (js/, css/, index.html) NÃO tem dono: qualquer revisor de outra dupla aprova.
 
-/.github/   @paulo-hoff
-/scripts/   @paulo-hoff
-/tests/     @paulo-hoff
-/package.json @paulo-hoff
+#/.github/   @paulo-hoff
+#/scripts/   @paulo-hoff
+#/tests/     @paulo-hoff
+#/package.json @paulo-hoff

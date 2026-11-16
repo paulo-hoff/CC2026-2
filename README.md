@@ -84,7 +84,6 @@ main            produção (protegida, publicada no GitHub Pages)
 | [`docs/CONFLITOS.md`](docs/CONFLITOS.md) | Branch desatualizada, conflitos, merge × rebase |
 | [`docs/BACKLOG.md`](docs/BACKLOG.md) | As 30 funcionalidades, duplas e rodadas (`docs/issues/` tem as Issues) |
 | [`docs/RELATORIO_FINAL.md`](docs/RELATORIO_FINAL.md) | Relatório individual (10 perguntas) |
-| [`docs/CONFIGURACAO_GITHUB.md`](docs/CONFIGURACAO_GITHUB.md) | Configuração do repositório (professor) |
 
 ## Terminologia
 
