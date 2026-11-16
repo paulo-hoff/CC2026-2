@@ -22,13 +22,20 @@ export function pluralize(count, singular, plural) {
 }
 
 // [F10] Data e hora da última atualização
-// NOT_IMPLEMENTED:F10
 /**
  * @param {Date|null} date
  * @returns {string} 'dd/mm/aaaa HH:MM' (ex.: '05/01/2025 09:07'); sem data = '--'
  */
 export function formatDateTime(date) {
-  return '--'; // TODO(F10)
+  if (!date) return '--';
+  const d = date instanceof Date ? date : new Date(date);
+  if (isNaN(d.getTime())) return '--';
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  const hours = String(d.getHours()).padStart(2, '0');
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 // [/F10]
 

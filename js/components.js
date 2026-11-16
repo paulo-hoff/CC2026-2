@@ -122,7 +122,8 @@ export function renderCompletedPercent(todos, el = document.getElementById('perc
 // [F10] Exibição da data da última atualização
 /** Escreve a data formatada em `el` (padrão: #last-update) usando formatDateTime (formatters.js). */
 export function renderLastUpdate(date, el = document.getElementById('last-update')) {
-  // TODO(F10)
+  if (!el) return;
+  el.textContent = formatDateTime(date);
 }
 // [/F10]
 
