@@ -102,17 +102,22 @@ export function filterPendingTodos(todos) {
 }
 // [/F16]
 
-// [F17] Limite de registros
-// NOT_IMPLEMENTED:F17
-/**
- * @param {any[]} list
- * @param {number} max  quantidade máxima; 0, negativo ou inválido = sem limite
- * @returns {any[]} NOVA lista com no máximo `max` itens
- */
-export function limitRecords(list, max) {
-  return list; // TODO(F17)
-}
-// [/F17]
+ // [F17] Limite de registros
+ /**
+  * @param {any[]} list
+  * @param {number} max quantidade máxima; 0, negativo ou inválido = sem limite
+  * @returns {any[]} NOVA lista com no máximo `max` itens
+  */
+ export function limitRecords(list, max) {
+   const limite = Number(max);
+
+   if (!Number.isInteger(limite) || limite <= 0) {
+     return [...list];
+   }
+
+   return list.slice(0, limite);
+ }
+ // [/F17]
 
 // [F25] Filtro combinado
 // NOT_IMPLEMENTED:F25
