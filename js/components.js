@@ -75,9 +75,10 @@ export function renderUserCount(users, el = document.getElementById('count-users
 // [/F01]
 
 // [F02] Contador de publicações
-// NOT_IMPLEMENTED:F02
 /** Escreve a quantidade de publicações em `el` (padrão: #count-posts). */
 export function renderPostCount(posts, el = document.getElementById('count-posts')) {
+
+  el.textContent = posts.length.toString();
   // TODO(F02)
 }
 // [/F02]
