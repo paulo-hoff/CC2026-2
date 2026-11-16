@@ -32,14 +32,15 @@ export function applyTodoFilter(todos, status = 'all') {
 }
 
 // [F04] Pesquisa por nome
-// NOT_IMPLEMENTED:F04
 /**
  * @param {object[]} users
  * @param {string} query  texto digitado (pode ter acentos, maiúsculas e espaços)
  * @returns {object[]} usuários cujo nome contém a consulta; consulta vazia = todos
  */
 export function filterByName(users, query) {
-  return users; // TODO(F04)
+  const term = normalizeText(query);
+  if (!term) return users;
+  return users.filter((user) => normalizeText(user.name).includes(term));
 }
 // [/F04]
 
