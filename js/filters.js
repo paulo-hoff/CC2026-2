@@ -45,21 +45,32 @@ export function filterByName(users, query) {
 // [/F04]
 
 // [F05] Filtro por cidade
-// NOT_IMPLEMENTED:F05
 /**
  * @param {object[]} users
  * @param {string} city  cidade escolhida; '' = todas
  * @returns {object[]} usuários cuja user.address.city é igual à cidade (sem diferenciar acentos/caixa)
  */
 export function filterByCity(users, city) {
-  return users; // TODO(F05)
+  const selectedCity = normalizeText(city);
+  if (!selectedCity) return [...users];
+  return users.filter((user) => normalizeText(user.address?.city) === selectedCity);
 }
 
 /**
  * @returns {string[]} cidades distintas, em ordem alfabética (pt-BR)
  */
 export function getUniqueCities(users) {
-  return []; // TODO(F05)
+  const cities = [];
+  const seen = new Set();
+  for (const user of users) {
+    const city = user.address?.city?.trim();
+    const key = normalizeText(city);
+    if (key && !seen.has(key)) {
+      seen.add(key);
+      cities.push(city);
+    }
+  }
+  return cities.sort((a, b) => a.localeCompare(b, 'pt-BR'));
 }
 // [/F05]
 
