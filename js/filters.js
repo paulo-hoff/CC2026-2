@@ -166,16 +166,31 @@ export function combineFilters(users, todos, { query, city, todoStatus } = DEFAU
 }
 // [/F25]
 
-// [F27] Paginação
-// NOT_IMPLEMENTED:F27
-/**
- * @param {any[]} list
- * @param {number} page      página desejada (1 = primeira); valores fora do intervalo são ajustados
- * @param {number} pageSize  itens por página
- * @returns {{items: any[], page: number, totalPages: number, totalItems: number}}
- *          totalPages é no mínimo 1, mesmo com lista vazia
- */
-export function paginate(list, page, pageSize) {
-  return { items: list, page: 1, totalPages: 1, totalItems: list.length }; // TODO(F27)
-}
-// [/F27]
+
+ // [F27] Paginação
+ /**
+  * @param {any[]} list
+  * @param {number} page
+  * @param {number} pageSize
+  * @returns {{items: any[], page: number, totalPages: number, totalItems: number}}
+  */
+ export function paginate(list, page, pageSize) {
+   const totalItems = list.length;
+
+   const tamanho = Number(pageSize);
+   const tamanhoValido = Number.isInteger(tamanho) && tamanho > 0 ? tamanho : 5;
+
+   const totalPages = Math.max(1, Math.ceil(totalItems / tamanhoValido));
+
+   const paginaSolicitada = Number(page);
+   const pagina = Number.isInteger(paginaSolicitada)
+     ? Math.min(Math.max(paginaSolicitada, 1), totalPages)
+     : 1;
+
+   const inicio = (pagina - 1) * tamanhoValido;
+   const items = list.slice(inicio, inicio + tamanhoValido);
+
+   return { items, page: pagina, totalPages, totalItems };
+ }
+ // [/F27]
+

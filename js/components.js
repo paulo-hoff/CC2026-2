@@ -179,7 +179,10 @@ export function renderUserDetails(details, el = document.getElementById('user-de
  * label.textContent = 'Página X de Y'; prev desabilitado na 1ª página; next na última.
  */
 export function renderPagination(info, els) {
-  // TODO(F27)
+  els.label.textContent = `Página ${info.page} de ${info.totalPages}`;
+
+  els.prev.disabled = info.page <= 1;
+  els.next.disabled = info.page >= info.totalPages;
 }
 // [/F27]
 
