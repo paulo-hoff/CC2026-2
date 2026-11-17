@@ -78,6 +78,8 @@ export function renderUserCount(users, el = document.getElementById('count-users
 /** Escreve a quantidade de publicações em `el` (padrão: #count-posts). */
 export function renderPostCount(posts, el = document.getElementById('count-posts')) {
 
+  if (!el) return;
+
   el.textContent = posts.length.toString();
   // TODO(F02)
 }
