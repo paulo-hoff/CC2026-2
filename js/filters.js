@@ -139,7 +139,6 @@ export function limitRecords(list, max) {
 // [/F17]
 
 // [F25] Filtro combinado
-// NOT_IMPLEMENTED:F25
 /**
  * Combina nome, cidade e status das tarefas (todos ao mesmo tempo).
  * criteria = { query, city, todoStatus: 'all' | 'completed' | 'pending' }
@@ -148,8 +147,17 @@ export function limitRecords(list, max) {
  * Reutilize filterByName e filterByCity (contratos já existem).
  * @returns {object[]}
  */
-export function combineFilters(users, todos, criteria) {
-  return users; // TODO(F25)
+export function combineFilters(users, todos, { query, city, todoStatus } = DEFAULT_CRITERIA) {
+  const byName = filterByName(users, query);
+  const filteredUsers = filterByCity(byName, city);
+  if (todoStatus !== 'completed' && todoStatus !== 'pending') return [...filteredUsers];
+
+  const completed = todoStatus === 'completed';
+  const matchingUserIds = new Set();
+  for (const todo of todos) {
+    if (Boolean(todo.completed) === completed) matchingUserIds.add(todo.userId);
+  }
+  return filteredUsers.filter((user) => matchingUserIds.has(user.id));
 }
 // [/F25]
 
