@@ -201,14 +201,17 @@ export function showSuccess(text, el) {
 // [/F28]
 
 // [F29] Voltar ao início
-// NOT_IMPLEMENTED:F29
 /** @returns {boolean} true quando scrollY é maior que o limite (padrão 300 px). */
 export function shouldShowBackToTop(scrollY, threshold = 300) {
+  if (scrollY > threshold) {
+    return true;
+  }
   return false; // TODO(F29)
 }
 
 /** Rola a janela suavemente até o topo: win.scrollTo({ top: 0, behavior: 'smooth' }). */
 export function scrollToTop(win = window) {
+  win.scrollTo({ top: 0, behavior: 'smooth' });
   // TODO(F29)
 }
 // [/F29]
