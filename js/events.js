@@ -122,15 +122,10 @@ function bindBackToTop(ctx) {
   const botao = document.getElementById("btn-top")
 
   if (botao) {
-    botao.onclick = () => scrollToTop();
+    botao.addEventListener("click", () => scrollToTop());
 
     window.addEventListener("scroll", () => {
-    
-      if (shouldShowBackToTop(scrollY)) {
-        botao.style.display = "block"
-      } else {
-        botao.style.display = "none"
-      }
+      shouldShowBackToTop(scrollY) ? botao.style.display = "block" : botao.style.display = "none";
     }); 
   } 
  // TODO(F29)
