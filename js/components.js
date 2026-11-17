@@ -67,26 +67,33 @@ export function clearMessages(el) {
 /* ---------- Rodada 1 ---------- */
 
 // [F01] Contador de usuários
-// NOT_IMPLEMENTED:F01
+
 /** Escreve a quantidade de usuários em `el` (padrão: #count-users). */
 export function renderUserCount(users, el = document.getElementById('count-users')) {
-  // TODO(F01)
+
+  el.textContent = String(users.length);
+
 }
 // [/F01]
 
 // [F02] Contador de publicações
-// NOT_IMPLEMENTED:F02
 /** Escreve a quantidade de publicações em `el` (padrão: #count-posts). */
 export function renderPostCount(posts, el = document.getElementById('count-posts')) {
+
+  if (!el) return;
+
+  el.textContent = posts.length.toString();
   // TODO(F02)
 }
 // [/F02]
 
 // [F03] Contador de tarefas
-// NOT_IMPLEMENTED:F03
 /** Escreve a quantidade de tarefas em `el` (padrão: #count-todos). */
 export function renderTodoCount(todos, el = document.getElementById('count-todos')) {
   // TODO(F03)
+  if(!el) {return};
+
+  el.textContent = `${todos.length}`;
 }
 // [/F03]
 
@@ -115,14 +122,16 @@ export function setLoading(isLoading, el = document.getElementById('loading')) {
 // [F14] Exibição do percentual de tarefas concluídas
 /** Escreve no formato '33%' em `el` (padrão: #percent-completed), usando completedPercentage (data.js). */
 export function renderCompletedPercent(todos, el = document.getElementById('percent-completed')) {
-  // TODO(F14)
+
+  el.textContent = `${completedPercentage(todos)}%`;
 }
 // [/F14]
 
 // [F10] Exibição da data da última atualização
 /** Escreve a data formatada em `el` (padrão: #last-update) usando formatDateTime (formatters.js). */
 export function renderLastUpdate(date, el = document.getElementById('last-update')) {
-  // TODO(F10)
+  if (!el) return;
+  el.textContent = formatDateTime(date);
 }
 // [/F10]
 
@@ -191,7 +200,10 @@ export function renderUserDetails(details, el = document.getElementById('user-de
  * label.textContent = 'Página X de Y'; prev desabilitado na 1ª página; next na última.
  */
 export function renderPagination(info, els) {
-  // TODO(F27)
+  els.label.textContent = `Página ${info.page} de ${info.totalPages}`;
+
+  els.prev.disabled = info.page <= 1;
+  els.next.disabled = info.page >= info.totalPages;
 }
 // [/F27]
 

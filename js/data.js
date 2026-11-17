@@ -30,24 +30,37 @@ export const state = {
 };
 
 // [F14] Percentual de tarefas concluídas
-// NOT_IMPLEMENTED:F14
 /**
  * @param {{completed: boolean}[]} todos
  * @returns {number} inteiro de 0 a 100 (lista vazia = 0)
  */
 export function completedPercentage(todos) {
-  return 0; // TODO(F14)
+  if(todos.length <= 0){
+    return 0;
+  }
+
+  const tarefasConcluida = todos.filter((tarefa) => tarefa.completed).length;
+  
+  return Math.round((tarefasConcluida / todos.length) * 100);
 }
 // [/F14]
 
 // [F23] Preferência de tema no localStorage
-// NOT_IMPLEMENTED:F23
 /**
  * Grava o tema em storage (chave THEME_KEY) somente se for um valor de THEMES.
  * @param {string} theme
  * @param {{setItem: Function}} storage
  */
 export function saveTheme(theme, storage) {
+  if (!THEMES.includes(theme)) {
+    return;
+  }
+
+  try {
+    storage.setItem(THEME_KEY, theme);
+  } catch (error) {
+    console.log('Não foi possível salvar o tema');
+  }
   // TODO(F23)
 }
 
@@ -57,6 +70,16 @@ export function saveTheme(theme, storage) {
  * @returns {'light'|'dark'}
  */
 export function loadTheme(storage) {
+  try {
+    const theme = storage.getItem(THEME_KEY);
+
+    if (THEMES.includes(theme)) {
+      return theme;
+    }
+  } catch (error) {
+    console.log('Não foi possível salvar o tema');
+  }
+
   return 'light'; // TODO(F23)
 }
 // [/F23]
