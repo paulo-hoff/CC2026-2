@@ -122,7 +122,7 @@ function bindBackToTop(ctx) {
   const botao = document.getElementById("btn-top")
 
   if (botao) {
-    botao.onclick = scrollToTop;
+    botao.onclick = () => scrollToTop();
 
     window.addEventListener("scroll", () => {
     
