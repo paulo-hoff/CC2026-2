@@ -86,10 +86,9 @@ export function clearFilters(criteria) {
 // [/F07]
 
 // [F15] Tarefas concluídas
-// NOT_IMPLEMENTED:F15
 /** @returns {object[]} somente as tarefas com completed === true */
 export function filterCompletedTodos(todos) {
-  return todos; // TODO(F15)
+ return todos.filter(todo => todo.completed === true);
 }
 // [/F15]
 
