@@ -19,14 +19,17 @@ export class HttpError extends Error {
 }
 
 // [F19] Tratamento de falhas HTTP
-// NOT_IMPLEMENTED:F19
 /**
  * Busca uma URL e devolve o JSON. Deve lançar HttpError(status) quando response.ok for false.
  * @returns {Promise<any>}
  */
 export async function fetchJSON(url, fetchFn = globalThis.fetch) {
   const response = await fetchFn(url);
-  return response.json(); // TODO(F19): verifique response.ok antes de ler o JSON
+
+  if (!response.ok)
+      throw new HttpError(response.status, `Recurso não encontrado ${response.status}`);
+
+  return response.json();
 }
 
 /**
@@ -35,7 +38,16 @@ export async function fetchJSON(url, fetchFn = globalThis.fetch) {
  * @returns {string}
  */
 export function describeError(error) {
-  return 'Não foi possível carregar os dados.'; // TODO(F19)
+
+  if (error instanceof HttpError) {
+    if (error.status === 404) return `Recurso não encontrado (${error.status}).`;
+    if (error.status >= 500) return `Erro no servidor ${error.status}.`;
+      return `Erro HTTP ${error.status}`;
+  }
+
+  if (error instanceof TypeError) return 'Erro de conexão com o servidor.';
+  return `Erro inesperado ao carregar os dados.`;
+
 }
 // [/F19]
 
