@@ -15,7 +15,21 @@
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-/* [F22] Tema escuro: redefina as variáveis acima para o tema escuro (seletor de atributo do elemento html) */
+/* [F22] Tema escuro */
+:root[data-theme="dark"] {
+  --bg: #111827;
+  --surface: #1f2937;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --border: #374151;
+  --primary: #60a5fa;
+  --primary-contrast: #111827;
+  --danger-bg: #4c1d1d;
+  --danger-text: #fecaca;
+  --success-bg: #14301f;
+  --success-text: #bbf7d0;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 /* [/F22] */
 
 * {

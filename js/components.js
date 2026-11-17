@@ -149,10 +149,9 @@ export function setButtonBusy(button, busy) {
 // [/F21]
 
 // [F22] Alternância de tema
-// NOT_IMPLEMENTED:F22
 /** @returns {'light'|'dark'} o tema oposto ao atual ('dark' → 'light'; qualquer outro → 'dark'). */
 export function toggleTheme(current) {
-  return current; // TODO(F22)
+  return current === 'dark' ? 'light' : 'dark';
 }
 
 /**
@@ -160,7 +159,9 @@ export function toggleTheme(current) {
  * @returns {'light'|'dark'} o tema aplicado
  */
 export function applyTheme(theme, root = document.documentElement) {
-  return theme; // TODO(F22) — THEMES já está importado no topo do arquivo
+  const applied = THEMES.includes(theme) ? theme : 'light';
+  root.dataset.theme = applied;
+  return applied;
 }
 // [/F22]
 
