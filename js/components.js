@@ -119,7 +119,8 @@ export function setLoading(isLoading, el = document.getElementById('loading')) {
 // [F14] Exibição do percentual de tarefas concluídas
 /** Escreve no formato '33%' em `el` (padrão: #percent-completed), usando completedPercentage (data.js). */
 export function renderCompletedPercent(todos, el = document.getElementById('percent-completed')) {
-  // TODO(F14)
+
+  el.textContent = `${completedPercentage(todos)}%`;
 }
 // [/F14]
 
