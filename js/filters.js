@@ -75,14 +75,28 @@ export function getUniqueCities(users) {
 // [/F05]
 
 // [F06] Ordenação alfabética
-// NOT_IMPLEMENTED:F06
 /**
  * @param {object[]} users
  * @param {'none'|'asc'|'desc'} order
  * @returns {object[]} NOVA lista ordenada por nome; 'none' mantém a ordem original
  */
 export function sortUsers(users, order) {
-  return users; // TODO(F06)
+  const copia = [...users];
+
+  if (order !== 'asc' && order !== 'desc') {
+    return copia;
+  }
+
+  copia.sort((usuarioA, usuarioB) => {
+    const nomeA = String(usuarioA.name ?? '');
+    const nomeB = String(usuarioB.name ?? '');
+
+    const resultado = nomeA.localeCompare(nomeB, 'pt-BR', { sensitivity: 'base' });
+
+    return order === 'asc' ? resultado : -resultado;
+  });
+
+  return copia;
 }
 // [/F06]
 
