@@ -103,10 +103,13 @@ export function renderEmptyState(el, criteria = {}) {
 // [/F08]
 
 // [F09] Indicador de carregamento
-// NOT_IMPLEMENTED:F09
 /** Mostra (isLoading = true) ou esconde (false) o elemento #loading usando a propriedade `hidden`. */
 export function setLoading(isLoading, el = document.getElementById('loading')) {
-  // TODO(F09)
+  if(isLoading) {
+    el.hidden = false;
+  } else {
+    el.hidden = true;
+  }
 }
 // [/F09]
 
