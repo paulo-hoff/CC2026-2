@@ -46,10 +46,10 @@ export async function loadLocalData(fetchFn = globalThis.fetch) {
 }
 
 // [F11] Buscar usuários na API
-// NOT_IMPLEMENTED:F11
+
 /** @returns {Promise<object[]|null>} lista de GET {API_BASE}/users */
 export async function fetchUsers(fetchFn = globalThis.fetch) {
-  return null; // TODO(F11)
+  return fetchJSON(`${API_BASE}/users`, fetchFn);
 }
 // [/F11]
 

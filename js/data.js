@@ -30,13 +30,18 @@ export const state = {
 };
 
 // [F14] Percentual de tarefas concluídas
-// NOT_IMPLEMENTED:F14
 /**
  * @param {{completed: boolean}[]} todos
  * @returns {number} inteiro de 0 a 100 (lista vazia = 0)
  */
 export function completedPercentage(todos) {
-  return 0; // TODO(F14)
+  if(todos.length <= 0){
+    return 0;
+  }
+
+  const tarefasConcluida = todos.filter((tarefa) => tarefa.completed).length;
+  
+  return Math.round((tarefasConcluida / todos.length) * 100);
 }
 // [/F14]
 

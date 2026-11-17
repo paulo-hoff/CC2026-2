@@ -32,56 +32,81 @@ export function applyTodoFilter(todos, status = 'all') {
 }
 
 // [F04] Pesquisa por nome
-// NOT_IMPLEMENTED:F04
 /**
  * @param {object[]} users
  * @param {string} query  texto digitado (pode ter acentos, maiúsculas e espaços)
  * @returns {object[]} usuários cujo nome contém a consulta; consulta vazia = todos
  */
 export function filterByName(users, query) {
-  return users; // TODO(F04)
+  const term = normalizeText(query);
+  if (!term) return users;
+  return users.filter((user) => normalizeText(user.name).includes(term));
 }
 // [/F04]
 
 // [F05] Filtro por cidade
-// NOT_IMPLEMENTED:F05
 /**
  * @param {object[]} users
  * @param {string} city  cidade escolhida; '' = todas
  * @returns {object[]} usuários cuja user.address.city é igual à cidade (sem diferenciar acentos/caixa)
  */
 export function filterByCity(users, city) {
-  return users; // TODO(F05)
+  const selectedCity = normalizeText(city);
+  if (!selectedCity) return [...users];
+  return users.filter((user) => normalizeText(user.address?.city) === selectedCity);
 }
 
 /**
  * @returns {string[]} cidades distintas, em ordem alfabética (pt-BR)
  */
 export function getUniqueCities(users) {
-  return []; // TODO(F05)
+  const cities = [];
+  const seen = new Set();
+  for (const user of users) {
+    const city = user.address?.city?.trim();
+    const key = normalizeText(city);
+    if (key && !seen.has(key)) {
+      seen.add(key);
+      cities.push(city);
+    }
+  }
+  return cities.sort((a, b) => a.localeCompare(b, 'pt-BR'));
 }
 // [/F05]
 
 // [F06] Ordenação alfabética
-// NOT_IMPLEMENTED:F06
 /**
  * @param {object[]} users
  * @param {'none'|'asc'|'desc'} order
  * @returns {object[]} NOVA lista ordenada por nome; 'none' mantém a ordem original
  */
 export function sortUsers(users, order) {
-  return users; // TODO(F06)
+  const copia = [...users];
+
+  if (order !== 'asc' && order !== 'desc') {
+    return copia;
+  }
+
+  copia.sort((usuarioA, usuarioB) => {
+    const nomeA = String(usuarioA.name ?? '');
+    const nomeB = String(usuarioB.name ?? '');
+
+    const resultado = nomeA.localeCompare(nomeB, 'pt-BR', { sensitivity: 'base' });
+
+    return order === 'asc' ? resultado : -resultado;
+  });
+
+  return copia;
 }
 // [/F06]
 
 // [F07] Limpar filtros
-// NOT_IMPLEMENTED:F07
 /**
  * @param {object} criteria  critérios atuais (não deve ser alterado)
  * @returns {object} NOVO objeto com os valores padrão (veja DEFAULT_CRITERIA em data.js)
  */
 export function clearFilters(criteria) {
-  return criteria; // TODO(F07)
+  return { ...DEFAULT_CRITERIA };
 }
 // [/F07]
 
@@ -100,20 +125,24 @@ export function filterPendingTodos(todos) {
 }
 // [/F16]
 
-// [F17] Limite de registros
-// NOT_IMPLEMENTED:F17
-/**
- * @param {any[]} list
- * @param {number} max  quantidade máxima; 0, negativo ou inválido = sem limite
- * @returns {any[]} NOVA lista com no máximo `max` itens
- */
-export function limitRecords(list, max) {
-  return list; // TODO(F17)
-}
-// [/F17]
+ // [F17] Limite de registros
+ /**
+  * @param {any[]} list
+  * @param {number} max quantidade máxima; 0, negativo ou inválido = sem limite
+  * @returns {any[]} NOVA lista com no máximo `max` itens
+  */
+ export function limitRecords(list, max) {
+   const limite = Number(max);
+
+   if (!Number.isInteger(limite) || limite <= 0) {
+     return [...list];
+   }
+
+   return list.slice(0, limite);
+ }
+ // [/F17]
 
 // [F25] Filtro combinado
-// NOT_IMPLEMENTED:F25
 /**
  * Combina nome, cidade e status das tarefas (todos ao mesmo tempo).
  * criteria = { query, city, todoStatus: 'all' | 'completed' | 'pending' }
@@ -122,21 +151,45 @@ export function limitRecords(list, max) {
  * Reutilize filterByName e filterByCity (contratos já existem).
  * @returns {object[]}
  */
-export function combineFilters(users, todos, criteria) {
-  return users; // TODO(F25)
+export function combineFilters(users, todos, { query, city, todoStatus } = DEFAULT_CRITERIA) {
+  const byName = filterByName(users, query);
+  const filteredUsers = filterByCity(byName, city);
+  if (todoStatus !== 'completed' && todoStatus !== 'pending') return [...filteredUsers];
+
+  const completed = todoStatus === 'completed';
+  const matchingUserIds = new Set();
+  for (const todo of todos) {
+    if (Boolean(todo.completed) === completed) matchingUserIds.add(todo.userId);
+  }
+  return filteredUsers.filter((user) => matchingUserIds.has(user.id));
 }
 // [/F25]
 
-// [F27] Paginação
-// NOT_IMPLEMENTED:F27
-/**
- * @param {any[]} list
- * @param {number} page      página desejada (1 = primeira); valores fora do intervalo são ajustados
- * @param {number} pageSize  itens por página
- * @returns {{items: any[], page: number, totalPages: number, totalItems: number}}
- *          totalPages é no mínimo 1, mesmo com lista vazia
- */
-export function paginate(list, page, pageSize) {
-  return { items: list, page: 1, totalPages: 1, totalItems: list.length }; // TODO(F27)
-}
-// [/F27]
+
+ // [F27] Paginação
+ /**
+  * @param {any[]} list
+  * @param {number} page
+  * @param {number} pageSize
+  * @returns {{items: any[], page: number, totalPages: number, totalItems: number}}
+  */
+ export function paginate(list, page, pageSize) {
+   const totalItems = list.length;
+
+   const tamanho = Number(pageSize);
+   const tamanhoValido = Number.isInteger(tamanho) && tamanho > 0 ? tamanho : 5;
+
+   const totalPages = Math.max(1, Math.ceil(totalItems / tamanhoValido));
+
+   const paginaSolicitada = Number(page);
+   const pagina = Number.isInteger(paginaSolicitada)
+     ? Math.min(Math.max(paginaSolicitada, 1), totalPages)
+     : 1;
+
+   const inicio = (pagina - 1) * tamanhoValido;
+   const items = list.slice(inicio, inicio + tamanhoValido);
+
+   return { items, page: pagina, totalPages, totalItems };
+ }
+ // [/F27]
+
