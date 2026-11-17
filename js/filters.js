@@ -101,13 +101,12 @@ export function sortUsers(users, order) {
 // [/F06]
 
 // [F07] Limpar filtros
-// NOT_IMPLEMENTED:F07
 /**
  * @param {object} criteria  critérios atuais (não deve ser alterado)
  * @returns {object} NOVO objeto com os valores padrão (veja DEFAULT_CRITERIA em data.js)
  */
 export function clearFilters(criteria) {
-  return criteria; // TODO(F07)
+  return { ...DEFAULT_CRITERIA };
 }
 // [/F07]
 
