@@ -36,6 +36,8 @@
   cursor: pointer;
 }
 
+
+
 .btn:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -97,4 +99,15 @@
 }
 
 /* [F29] Estilo do botão "Voltar ao início" */
+#btn-top {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 8px 12px;
+    cursor: pointer;
+
+    background-color: #252B3A;
+    color: white;
+}
 /* [/F29] */
