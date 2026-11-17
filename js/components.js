@@ -98,14 +98,18 @@ export function renderTodoCount(todos, el = document.getElementById('count-todos
 // [/F03]
 
 // [F08] Mensagem de lista vazia
-// NOT_IMPLEMENTED:F08
 /**
  * Chamada por renderUserList quando não há usuários.
  * Deve escrever em `el.innerHTML` um parágrafo com a classe "empty-state" e o texto
  * "Nenhum usuário encontrado." — se criteria.query não for vazio, inclua o termo (escapado).
  */
 export function renderEmptyState(el, criteria = {}) {
-  // TODO(F08)
+  if (!el) return;
+  const query = criteria?.query?.trim();
+  const text = query
+    ? `Nenhum usuário encontrado para "${escapeHtml(criteria.query)}".`
+    : 'Nenhum usuário encontrado.';
+  el.innerHTML = `<p class="empty-state">${text}</p>`;
 }
 // [/F08]
 
