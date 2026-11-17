@@ -62,10 +62,12 @@ export async function fetchPosts(fetchFn = globalThis.fetch) {
 // [/F12]
 
 // [F13] Buscar tarefas na API
-// NOT_IMPLEMENTED:F13
+
 /** @returns {Promise<object[]|null>} lista de GET {API_BASE}/todos */
 export async function fetchTodos(fetchFn = globalThis.fetch) {
-  return null; // TODO(F13)
+
+  return fetchJSON(`${API_BASE}/todos`, fetchFn);
+
 }
 // [/F13]
 
