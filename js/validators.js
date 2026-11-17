@@ -14,7 +14,6 @@ export function isValidEmail(value) {
 }
 
 // [F24] Validação do campo de busca
-// NOT_IMPLEMENTED:F24
 /**
  * Regras: após remover espaços das pontas, no máximo 40 caracteres e somente
  * letras (com acentos), espaços, apóstrofo, ponto e hífen.
@@ -22,6 +21,17 @@ export function isValidEmail(value) {
  * @returns {{valid: boolean, message: string, value: string}}
  */
 export function validateSearch(query) {
-  return { valid: true, message: '', value: String(query ?? '').trim() }; // TODO(F24)
+
+  const value = String(query ?? '').trim();
+
+  if(value.length > 40){
+    return { valid: false, message: 'Máximo de 40 caracteres na busca', value};
+  }
+
+  if(!/^[\p{L}\s'.-]*$/u.test(value)){
+    return { valid: false, message: 'Use apenas: letras com acento, espaço, apóstrofo, ponto e hífen', value};
+  }
+
+  return { valid: true, message: '', value};
 }
 // [/F24]

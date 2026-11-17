@@ -46,13 +46,21 @@ export function completedPercentage(todos) {
 // [/F14]
 
 // [F23] Preferência de tema no localStorage
-// NOT_IMPLEMENTED:F23
 /**
  * Grava o tema em storage (chave THEME_KEY) somente se for um valor de THEMES.
  * @param {string} theme
  * @param {{setItem: Function}} storage
  */
 export function saveTheme(theme, storage) {
+  if (!THEMES.includes(theme)) {
+    return;
+  }
+
+  try {
+    storage.setItem(THEME_KEY, theme);
+  } catch (error) {
+    console.log('Não foi possível salvar o tema');
+  }
   // TODO(F23)
 }
 
@@ -62,6 +70,16 @@ export function saveTheme(theme, storage) {
  * @returns {'light'|'dark'}
  */
 export function loadTheme(storage) {
+  try {
+    const theme = storage.getItem(THEME_KEY);
+
+    if (THEMES.includes(theme)) {
+      return theme;
+    }
+  } catch (error) {
+    console.log('Não foi possível salvar o tema');
+  }
+
   return 'light'; // TODO(F23)
 }
 // [/F23]
