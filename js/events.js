@@ -119,6 +119,15 @@ function bindThemeButton(ctx) {
 // [F29] Ligação do botão "Voltar ao início" (#btn-top)
 /** Mostrar/esconder o botão no evento 'scroll' (shouldShowBackToTop) e rolar ao topo no clique. */
 function bindBackToTop(ctx) {
-  // TODO(F29)
+  const botao = document.getElementById("btn-top")
+
+  if (botao) {
+    botao.addEventListener("click", () => scrollToTop());
+
+    window.addEventListener("scroll", () => {
+      shouldShowBackToTop(scrollY) ? botao.style.display = "block" : botao.style.display = "none";
+    }); 
+  } 
+ // TODO(F29)
 }
 // [/F29]
