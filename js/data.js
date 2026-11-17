@@ -85,7 +85,6 @@ export function loadTheme(storage) {
 // [/F23]
 
 // [F26] Detalhes de um usuário
-// NOT_IMPLEMENTED:F26
 /**
  * @returns {null | {id:number, name:string, email:string, phone:string, website:string,
  *   company:string, city:string, postCount:number, todoCount:number, completedTodoCount:number}}
