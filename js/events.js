@@ -112,7 +112,10 @@ function bindRefreshButton(ctx) {
 // [F22] Ligação do botão de tema (#btn-theme)
 /** Ao clicar: ctx.onThemeChange(applyTheme(toggleTheme(ctx.state.theme))) — onThemeChange já guarda o tema. */
 function bindThemeButton(ctx) {
-  // TODO(F22)
+  const btn = document.getElementById('btn-theme');
+  btn.addEventListener('click', () => {
+    ctx.onThemeChange(applyTheme(toggleTheme(ctx.state.theme)));
+  });
 }
 // [/F22]
 
