@@ -85,12 +85,27 @@ export function loadTheme(storage) {
 // [/F23]
 
 // [F26] Detalhes de um usuário
-// NOT_IMPLEMENTED:F26
 /**
  * @returns {null | {id:number, name:string, email:string, phone:string, website:string,
  *   company:string, city:string, postCount:number, todoCount:number, completedTodoCount:number}}
  */
 export function getUserDetails(user, posts, todos) {
-  return null; // TODO(F26)
+  if (!user) return null;
+
+  const userPosts = posts.filter((post) => post.userId === user.id);
+  const userTodos = todos.filter((todo) => todo.userId === user.id);
+
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+    website: user.website,
+    company: user.company?.name ?? '',
+    city: user.address?.city ?? '',
+    postCount: userPosts.length,
+    todoCount: userTodos.length,
+    completedTodoCount: userTodos.filter((todo) => todo.completed).length,
+  };
 }
 // [/F26]

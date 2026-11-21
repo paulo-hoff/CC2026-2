@@ -176,7 +176,25 @@ export function applyTheme(theme, root = document.documentElement) {
  * Todo texto vindo dos dados deve passar por escapeHtml.
  */
 export function renderUserDetails(details, el = document.getElementById('user-details')) {
-  // TODO(F26)
+  if (!details) {
+    el.hidden = true;
+    el.innerHTML = '';
+    return;
+  }
+
+  el.hidden = false;
+  el.innerHTML = `
+    <h2>${escapeHtml(details.name)}</h2>
+    <dl>
+      <dt>E-mail</dt><dd>${escapeHtml(details.email)}</dd>
+      <dt>Telefone</dt><dd>${escapeHtml(details.phone)}</dd>
+      <dt>Site</dt><dd>${escapeHtml(details.website)}</dd>
+      <dt>Empresa</dt><dd>${escapeHtml(details.company)}</dd>
+      <dt>Cidade</dt><dd>${escapeHtml(details.city)}</dd>
+      <dt>Publicações</dt><dd>${escapeHtml(details.postCount)}</dd>
+      <dt>Tarefas</dt><dd>${escapeHtml(details.completedTodoCount)} de ${escapeHtml(details.todoCount)} concluídas</dd>
+    </dl>
+  `;
 }
 // [/F26]
 
