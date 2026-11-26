@@ -84,16 +84,45 @@ export async function fetchTodos(fetchFn = globalThis.fetch) {
 // [/F13]
 
 // [F20] Fallback para dados locais
-// NOT_IMPLEMENTED:F20
 /**
  * Tenta a API (fetchUsers, fetchPosts, fetchTodos). Se qualquer chamada falhar ou não
  * devolver uma lista, usa loadLocalData.
  * @returns {Promise<{users: object[], posts: object[], todos: object[], source: 'remote'|'local'}>}
  */
+  
 export async function loadWithFallback(fetchFn = globalThis.fetch) {
-  const local = await loadLocalData(fetchFn); // TODO(F20): tente a API primeiro
-  return { ...local, source: 'local' };
+  try {
+    const [users, posts, todos] = await Promise.all([
+      fetchUsers(fetchFn),
+      fetchPosts(fetchFn),
+      fetchTodos(fetchFn)
+    ]);
+
+    if (
+      !Array.isArray(users) ||
+      !Array.isArray(posts) ||
+      !Array.isArray(todos)
+    ) {
+      throw new Error('Resposta da API inválida');
+    }
+
+    return {
+      users,
+      posts,
+      todos,
+      source: 'remote'
+    };
+
+  } catch (error) {
+    const local = await loadLocalData(fetchFn);
+
+    return {
+      ...local,
+      source: 'local'
+    };
+  }
 }
+
 // [/F20]
 
 /** Ponto de entrada usado pelo app. */
