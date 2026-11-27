@@ -225,17 +225,32 @@ export function scrollToTop(win = window) {
 // [/F29]
 
 // [F30] Indicador de dados locais ou remotos
-// NOT_IMPLEMENTED:F30
+
 /**
  * @param {'local'|'remote'|string} source
- * @returns {string} 'Dados locais (mock.json)' | 'Dados remotos (API)' | 'Origem desconhecida'
+ * @returns {string}
  */
 export function describeSource(source) {
-  return '--'; // TODO(F30)
+  if (source === 'local') {
+    return 'Dados locais (mock.json)';
+  }
+
+  if (source === 'remote') {
+    return 'Dados remotos (API)';
+  }
+
+  return 'Origem desconhecida';
 }
 
-/** Escreve describeSource(source) em `el` (padrão: #data-source) e grava el.dataset.source. */
-export function renderSourceIndicator(source, el = document.getElementById('data-source')) {
-  // TODO(F30)
+/** Escreve describeSource(source) em `el` e grava el.dataset.source. */
+export function renderSourceIndicator(
+  source,
+  el = document.getElementById('data-source')
+) {
+  if (!el) return;
+
+  el.textContent = describeSource(source);
+  el.dataset.source = source;
 }
+
 // [/F30]
