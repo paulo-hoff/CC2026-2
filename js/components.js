@@ -98,22 +98,29 @@ export function renderTodoCount(todos, el = document.getElementById('count-todos
 // [/F03]
 
 // [F08] Mensagem de lista vazia
-// NOT_IMPLEMENTED:F08
 /**
  * Chamada por renderUserList quando não há usuários.
  * Deve escrever em `el.innerHTML` um parágrafo com a classe "empty-state" e o texto
  * "Nenhum usuário encontrado." — se criteria.query não for vazio, inclua o termo (escapado).
  */
 export function renderEmptyState(el, criteria = {}) {
-  // TODO(F08)
+  if (!el) return;
+  const query = criteria?.query?.trim();
+  const text = query
+    ? `Nenhum usuário encontrado para "${escapeHtml(criteria.query)}".`
+    : 'Nenhum usuário encontrado.';
+  el.innerHTML = `<p class="empty-state">${text}</p>`;
 }
 // [/F08]
 
 // [F09] Indicador de carregamento
-// NOT_IMPLEMENTED:F09
 /** Mostra (isLoading = true) ou esconde (false) o elemento #loading usando a propriedade `hidden`. */
 export function setLoading(isLoading, el = document.getElementById('loading')) {
-  // TODO(F09)
+  if(isLoading) {
+    el.hidden = false;
+  } else {
+    el.hidden = true;
+  }
 }
 // [/F09]
 
@@ -149,10 +156,9 @@ export function setButtonBusy(button, busy) {
 // [/F21]
 
 // [F22] Alternância de tema
-// NOT_IMPLEMENTED:F22
 /** @returns {'light'|'dark'} o tema oposto ao atual ('dark' → 'light'; qualquer outro → 'dark'). */
 export function toggleTheme(current) {
-  return current; // TODO(F22)
+  return current === 'dark' ? 'light' : 'dark';
 }
 
 /**
@@ -160,7 +166,9 @@ export function toggleTheme(current) {
  * @returns {'light'|'dark'} o tema aplicado
  */
 export function applyTheme(theme, root = document.documentElement) {
-  return theme; // TODO(F22) — THEMES já está importado no topo do arquivo
+  const applied = THEMES.includes(theme) ? theme : 'light';
+  root.dataset.theme = applied;
+  return applied;
 }
 // [/F22]
 
@@ -201,30 +209,48 @@ export function showSuccess(text, el) {
 // [/F28]
 
 // [F29] Voltar ao início
-// NOT_IMPLEMENTED:F29
 /** @returns {boolean} true quando scrollY é maior que o limite (padrão 300 px). */
 export function shouldShowBackToTop(scrollY, threshold = 300) {
+  if (scrollY > threshold) {
+    return true;
+  }
   return false; // TODO(F29)
 }
 
 /** Rola a janela suavemente até o topo: win.scrollTo({ top: 0, behavior: 'smooth' }). */
 export function scrollToTop(win = window) {
+  win.scrollTo({ top: 0, behavior: 'smooth' });
   // TODO(F29)
 }
 // [/F29]
 
 // [F30] Indicador de dados locais ou remotos
-// NOT_IMPLEMENTED:F30
+
 /**
  * @param {'local'|'remote'|string} source
- * @returns {string} 'Dados locais (mock.json)' | 'Dados remotos (API)' | 'Origem desconhecida'
+ * @returns {string}
  */
 export function describeSource(source) {
-  return '--'; // TODO(F30)
+  if (source === 'local') {
+    return 'Dados locais (mock.json)';
+  }
+
+  if (source === 'remote') {
+    return 'Dados remotos (API)';
+  }
+
+  return 'Origem desconhecida';
 }
 
-/** Escreve describeSource(source) em `el` (padrão: #data-source) e grava el.dataset.source. */
-export function renderSourceIndicator(source, el = document.getElementById('data-source')) {
-  // TODO(F30)
+/** Escreve describeSource(source) em `el` e grava el.dataset.source. */
+export function renderSourceIndicator(
+  source,
+  el = document.getElementById('data-source')
+) {
+  if (!el) return;
+
+  el.textContent = describeSource(source);
+  el.dataset.source = source;
 }
+
 // [/F30]

@@ -112,13 +112,25 @@ function bindRefreshButton(ctx) {
 // [F22] Ligação do botão de tema (#btn-theme)
 /** Ao clicar: ctx.onThemeChange(applyTheme(toggleTheme(ctx.state.theme))) — onThemeChange já guarda o tema. */
 function bindThemeButton(ctx) {
-  // TODO(F22)
+  const btn = document.getElementById('btn-theme');
+  btn.addEventListener('click', () => {
+    ctx.onThemeChange(applyTheme(toggleTheme(ctx.state.theme)));
+  });
 }
 // [/F22]
 
 // [F29] Ligação do botão "Voltar ao início" (#btn-top)
 /** Mostrar/esconder o botão no evento 'scroll' (shouldShowBackToTop) e rolar ao topo no clique. */
 function bindBackToTop(ctx) {
-  // TODO(F29)
+  const botao = document.getElementById("btn-top")
+
+  if (botao) {
+    botao.addEventListener("click", () => scrollToTop());
+
+    window.addEventListener("scroll", () => {
+      shouldShowBackToTop(scrollY) ? botao.style.display = "block" : botao.style.display = "none";
+    }); 
+  } 
+ // TODO(F29)
 }
 // [/F29]
