@@ -118,10 +118,9 @@ export function filterCompletedTodos(todos) {
 // [/F15]
 
 // [F16] Tarefas pendentes
-// NOT_IMPLEMENTED:F16
 /** @returns {object[]} somente as tarefas com completed === false */
 export function filterPendingTodos(todos) {
-  return todos; // TODO(F16)
+  return todos.filter((todo) => todo.completed === false);
 }
 // [/F16]
 
