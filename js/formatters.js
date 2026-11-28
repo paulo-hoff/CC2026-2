@@ -40,14 +40,21 @@ export function formatDateTime(date) {
 // [/F10]
 
 // [F18] Formatação de nomes
-// NOT_IMPLEMENTED:F18
 /**
- * Remove tratamento inicial (Mr., Mrs., Ms., Dr.), colapsa espaços e coloca cada palavra
- * com a primeira letra maiúscula e o restante minúsculo.
  * @param {string} name
  * @returns {string}
  */
 export function formatUserName(name) {
-  return name; // TODO(F18)
+  if (!name) return '';
+
+  name = name.trim();
+
+  name = name.replace(/^(Mr|Mrs|Ms|Dr)\.?\s+/i, '');
+
+  return name
+    .trim()
+    .split(/\s+/)
+    .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
 }
 // [/F18]
